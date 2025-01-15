@@ -2,9 +2,24 @@ from django.db import models
 
 from core.apps.common.models import TimedBaseModel
 from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.validators import UnicodeUsernameValidator
 
 
 class CustomUser(AbstractUser, TimedBaseModel):
+    username_validator = UnicodeUsernameValidator()
+    username = models.CharField(
+        ("Никнейм"),
+        max_length=150,
+        unique=True,
+        help_text=(
+            "Не более 150 символов"
+        ),
+        validators=[username_validator],
+        error_messages={
+            "unique":("Пользователь с таким никнеймом уже существует"),
+        },
+    )
+
     first_name = models.CharField(
         verbose_name="Имя",
         max_length=150,

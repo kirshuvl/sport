@@ -21,8 +21,9 @@ class CustomUserAdmin(UserAdmin):
             {
                 "classes": ("wide",),
                 "fields": (
-                    "first_name",
+                    "username",
                     "last_name",
+                    "first_name",
                     "surname",
                     "email",
                     "status",
@@ -44,6 +45,7 @@ class CustomUserAdmin(UserAdmin):
             {
                 "classes": ("wide",),
                 "fields": (
+                    "username",
                     "last_name",
                     "first_name",
                     "surname",
