@@ -21,7 +21,6 @@ class CustomUserAdmin(UserAdmin):
             {
                 "classes": ("wide",),
                 "fields": (
-                    "username",
                     "last_name",
                     "first_name",
                     "surname",
@@ -45,7 +44,6 @@ class CustomUserAdmin(UserAdmin):
             {
                 "classes": ("wide",),
                 "fields": (
-                    "username",
                     "last_name",
                     "first_name",
                     "surname",
@@ -57,3 +55,4 @@ class CustomUserAdmin(UserAdmin):
             },
         ),
     )
+    ordering = ["id"]

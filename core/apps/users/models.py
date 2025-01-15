@@ -1,48 +1,37 @@
 from django.db import models
 
 from core.apps.common.models import TimedBaseModel
-from django.contrib.auth.models import AbstractUser
-from django.contrib.auth.validators import UnicodeUsernameValidator
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
+from core.apps.users.managers import CustomUserManager
 
 
-class CustomUser(AbstractUser, TimedBaseModel):
-    username_validator = UnicodeUsernameValidator()
-    username = models.CharField(
-        ("Никнейм"),
-        max_length=150,
-        unique=True,
-        help_text=(
-            "Не более 150 символов"
-        ),
-        validators=[username_validator],
-        error_messages={
-            "unique":("Пользователь с таким никнеймом уже существует"),
-        },
-    )
+class CustomUser(AbstractBaseUser, PermissionsMixin, TimedBaseModel):
+    username = None
 
     first_name = models.CharField(
-        verbose_name="Имя",
+        verbose_name="first name",
         max_length=150,
     )
 
     last_name = models.CharField(
-        verbose_name="Фамилия",
+        verbose_name="last name",
         max_length=150,
     )
 
     surname = models.CharField(
-        verbose_name="Отчество",
+        verbose_name="surname",
         max_length=150,
         blank=True,
     )
 
     email = models.EmailField(
-        verbose_name="Почта",
-        blank=True,
+        verbose_name="email",
+        unique=True,
+        error_messages={"unique": "Пользователь с такой почтой уже зарегистрировался"},
     )
 
     bio = models.TextField(
-        verbose_name="О себе",
+        verbose_name="bio",
         blank=True,
     )
 
@@ -52,11 +41,24 @@ class CustomUser(AbstractUser, TimedBaseModel):
     ]
 
     status = models.CharField(
-        verbose_name="Статус пользователя",
+        verbose_name="user status",
         max_length=2,
         choices=STATUS_CHOICES,
         default="PT",
     )
+
+    is_staff = models.BooleanField(
+        ("staff status"),
+        default=False,
+    )
+
+    is_active = models.BooleanField(
+        ("active"),
+        default=True,
+    )
+
+    USERNAME_FIELD = 'email'
+    objects = CustomUserManager()
 
     class Meta:
         verbose_name = "Пользователь"
