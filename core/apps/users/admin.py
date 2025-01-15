@@ -1,6 +1,7 @@
 from django.contrib import admin
-from core.apps.users.models import CustomUser
 from django.contrib.auth.admin import UserAdmin
+
+from core.apps.users.models import CustomUser
 
 
 @admin.register(CustomUser)
@@ -24,11 +25,11 @@ class CustomUserAdmin(UserAdmin):
                     "last_name",
                     "surname",
                     "email",
-                    "bio",
                     "status",
                 ),
             },
         ),
+        ("О себе", {"classes": ("collapse",), "fields": ("bio",)}),
         (
             "Пароль",
             {
@@ -38,8 +39,19 @@ class CustomUserAdmin(UserAdmin):
         ),
     )
     add_fieldsets = (
-    (None, {
-        'classes': ('wide',),
-        'fields': ('last_name', 'first_name', 'surname', 'status', 'email', 'password1', 'password2'),
-    }),
-)
+        (
+            None,
+            {
+                "classes": ("wide",),
+                "fields": (
+                    "last_name",
+                    "first_name",
+                    "surname",
+                    "status",
+                    "email",
+                    "password1",
+                    "password2",
+                ),
+            },
+        ),
+    )

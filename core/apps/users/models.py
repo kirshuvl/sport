@@ -1,6 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+
 from core.apps.common.models import TimedBaseModel
+from django.contrib.auth.models import AbstractUser
 
 
 class CustomUser(AbstractUser, TimedBaseModel):
@@ -50,4 +51,3 @@ class CustomUser(AbstractUser, TimedBaseModel):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
-

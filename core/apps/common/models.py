@@ -13,5 +13,4 @@ class TimedBaseModel(models.Model):
     )
 
     class Meta:
-        abstract=True
-
+        abstract = True
