@@ -2,6 +2,7 @@ from django.db import models
 
 from core.apps.common.models import TimedBaseModel
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
+
 from core.apps.users.managers import CustomUserManager
 
 
@@ -57,7 +58,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin, TimedBaseModel):
         default=True,
     )
 
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = "email"
     objects = CustomUserManager()
 
     class Meta:
