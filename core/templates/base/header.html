@@ -9,14 +9,14 @@
             </b></h2>
         </div>
         {% if request.user.is_anonymous %}
-        <div class="d-grid gap-2 m-4">
-            <a href="#"><button type="button" class="btn btn-primary btn-sm"><b>Зарегистрироваться</b></button></a>
-            <a href="#" type="button" class="btn btn-primary btn-sm"><b>Войти</b></a> 
+        <div class="d-grid gap-2 m-3">
+            <a href="#"><button type="button" class="btn btn-primary"><b>Зарегистрироваться</b></button></a>
+            <a href="#" type="button" class="btn btn-primary "><b>Войти</b></a> 
         </div>
         {% else %}
-        <div class="d-grid gap-2 m-4">
-            <a href="#"><button type="button" class="btn btn-primary btn-sm"><b> Профиль</b></button></a>
-            <a href="#" type="button" class="btn btn-danger btn-sm"><b>Выйти</b></a> 
+        <div class="d-grid gap-2 m-3">
+            <a href="#"><button type="button" class="btn btn-primary "><b> Профиль</b></button></a>
+            <a href="#" type="button" class="btn btn-danger "><b>Выйти</b></a> 
         </div>
         {% endif %}
     </div>  
