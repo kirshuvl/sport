@@ -1,0 +1,31 @@
+{% extends 'base/base.html' %}
+{% block title %} Регистрация {% endblock %}
+
+{% load static %}
+{% block body %}
+<div class="card m-2">
+    <div class="d-flex">
+        <div>
+            <img src="{% static 'images/photo_2025-01-09_20-47-57.jpg' %}" width="950"class="img-fluid rounded-start border-end" alt="...">
+        </div>
+        <div class="col-md-9">
+            <div class="card-header bg-white d-flex justify-content-between">
+                <h5><b>Профиль</b></h5>
+                <a href="#"><span class="badge text-bg-primary p-2 d-flex align-items-center"><i class="bi bi-pencil"></i></span></a>
+            </div>
+            <div class="card-body">
+                <div class="mb-2"><div class="card-text"><b>ФИО:<br></b> {{ user.last_name }} {{ user.first_name }} {{ user.surname }}</div>
+                <div class="mb-2"><div class="card-text"><b>E-mail:</b></div>{{ user.email }}</div>
+                {% if user.status == "PT" %}
+                <div class="mb-2"><div class="card-text"><b>Статус:</b></div>Участник</div>
+                {% elif user.status == "TC" %}
+                <div class="mb-2"><div class="card-text"><b>Статус:</b></div>Руководитель</div>
+                {% else %}
+                <div class="mb-2"><div class="card-text"><b>Статус:</b></div>Поставщик</div>
+                {% endif %}
+                <div class="mb-2"><div class="card-text"><b>О себе:</b></div>{{ user.bio }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
