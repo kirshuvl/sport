@@ -7,6 +7,7 @@ class UserLoginForm(AuthenticationForm):
         label=("Почта"),
         widget=forms.EmailInput(attrs={"class": "form-control", "placeholder": "Введите почту"}),
     )
+    
     password = forms.CharField(
         label=("Введите пароль"),
         strip=False,
