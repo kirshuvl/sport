@@ -34,6 +34,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin, TimedBaseModel):
     bio = models.TextField(
         verbose_name="bio",
         blank=True,
+        default="Тут пока ничего нет. Вы можете заполнить биографию самостоятельно :)"
     )
 
     STATUS_CHOICES = [
